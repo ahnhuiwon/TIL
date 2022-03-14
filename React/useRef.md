@@ -35,4 +35,21 @@
     * Object.keys()와 map() 함수로 객체의 속성 수 만큼 반복해서 초기화 시킨다.
     * 초기화 시킨 값을 set_user_state를 이용해 user_state에 할당.
     * Ref의 current값으로 우리가 선택하고자 하는 dom을 가르키며 DOM API focus()를 호출, 포커싱을 해준다.
+    
+ # Ref로 setInterval과 setTimeout 함수 초기화(clear) 하기
+ 
+ ![Peek 2022-03-15 01-09](https://user-images.githubusercontent.com/94499416/158213682-07833bfb-14dd-4ed8-a88e-5c25d2aaa2ef.gif)
+ 
+    * 위 이미지는 컴포넌트가 mount 됬을때 count가 증가하고 unmount시 카운트가 초기화되는 이미지이다.
+    * setInterval과 setTimeout 같은 함수는 clear해주지 않으면 메모리를 많이 소모한다.
+    * 따라서 함수를 구현하고 unmount 혹은 특정 상황시 clear해줄 필요가 있다.
+    
+ ![스크린샷, 2022-03-15 01-12-56](https://user-images.githubusercontent.com/94499416/158214522-878e9800-ad74-4c0d-8dbf-079a5c37c156.png)
+ 
+    * state 초기값과 ref 객체를 선언해준다.
+ 
+ ![스크린샷, 2022-03-15 01-15-34](https://user-images.githubusercontent.com/94499416/158214876-4754e897-1130-4bff-a239-62d8989ea909.png)
+ 
+    * Ref 객체에 setInterval 함수를 넣어준다.
+    * 컴포넌트가 언마운트될때 clearInterval 함수를 통해 setInterval 함수가 들어있는 Ref 객체를 초기화시킨다. 
 
