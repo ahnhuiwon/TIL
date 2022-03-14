@@ -31,6 +31,8 @@
   
   ![스크린샷, 2022-03-14 23-34-26](https://user-images.githubusercontent.com/94499416/158194515-c2f5f7a2-2c7d-40c1-85ca-6bb9ee895bcc.png)
   
-    * ...(스프레드 문법)으로 복사한 state값을 object_reset이란 변수에 할당한 뒤 Object.keys()와 map() 함수로 객체의 속성 수 만큼 반복해서 초기화 시킨다.
-    * 초기화 시킨 값을 user_state에 할당 시킨 뒤 Ref의 current값으로 우리가 선택하고자 하는 dom을 가르키며 DOM API focus()를 호출, 포커싱을 해준다.
+    * ...(스프레드 문법)으로 복사한 state값을 object_reset이란 변수에 할당.
+    * Object.keys()와 map() 함수로 객체의 속성 수 만큼 반복해서 초기화 시킨다.
+    * 초기화 시킨 값을 set_user_state를 이용해 user_state에 할당.
+    * Ref의 current값으로 우리가 선택하고자 하는 dom을 가르키며 DOM API focus()를 호출, 포커싱을 해준다.
 
