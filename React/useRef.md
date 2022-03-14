@@ -9,5 +9,7 @@
 
   ## 컴포넌트에 focus를 위치시킬 필요가 있는 경우.
     
-    * 위 코드는 여러 input들과 초기화 버튼이 존재하고 버튼을 누른다면 모든 state값이 초기화되고 첫번째 input으로 focus되는 코드다.
+ ![reset_ref](https://user-images.githubusercontent.com/94499416/158188328-557cf60d-0458-4f43-a9f3-11b45db4409b.gif)
+    
+    * 위 이미지는 여러 input들과 초기화 버튼이 존재하고 버튼을 누른다면 모든 state값이 초기화되고 첫번째 input으로 focus되는 이미지이다.
     * 여러 input에 값을 여러개 입력하고 유저가 초기화 버튼을 누른다면 첫번째 input으로 이동해야하는 경우 필요하다.
