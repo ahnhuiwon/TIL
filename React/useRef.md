@@ -44,9 +44,13 @@
     * setInterval과 setTimeout 같은 함수는 clear해주지 않으면 메모리를 많이 소모한다.
     * 따라서 함수를 구현하고 unmount 혹은 특정 상황시 clear해줄 필요가 있다.
     
+ ## A. 초기값 설정
+ 
  ![스크린샷, 2022-03-15 01-12-56](https://user-images.githubusercontent.com/94499416/158214522-878e9800-ad74-4c0d-8dbf-079a5c37c156.png)
  
     * state 초기값과 ref 객체를 선언해준다.
+ 
+ ## B. setInterval과 clearInterval 설정
  
  ![스크린샷, 2022-03-15 01-15-34](https://user-images.githubusercontent.com/94499416/158214876-4754e897-1130-4bff-a239-62d8989ea909.png)
  
