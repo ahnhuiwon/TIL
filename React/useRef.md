@@ -63,4 +63,26 @@
     * useRef로 변수를 관리한다면, 변수가 업데이트 되어도 컴포넌트가 리렌더링 되지 않는다.
     * 리렌더링이 필요 없는 변수라면 useRef로 관리해주는게 효율적이다.
     * setInterval을 통해 만들어진 id, scroll 위치, 배열에 새 항목을 추가할 때 필요한 고유 key등에 쓰인다.
-
+    
+ ![Peek 2022-03-17 00-31](https://user-images.githubusercontent.com/94499416/158627619-4d4965fb-7f03-4567-8182-ae30efa5b386.gif)
+ 
+    * 위 이미지는 배열에 새로운 항목을 추가하는 이미지이다.
+    
+## A. 초기값 설정
+    
+ ![스크린샷, 2022-03-17 00-34-10](https://user-images.githubusercontent.com/94499416/158628279-f16463f3-d64b-4675-bb29-c06736e5fb9d.png)
+ 
+    * state 초기값과 ref 객체를 선언해준다.
+    * 배열의 고유 값(id) 변수로 next_id = useRef(1)을 선언해준다.
+    
+ ![스크린샷, 2022-03-17 00-41-09](https://user-images.githubusercontent.com/94499416/158629763-d046102c-3d01-40b2-ae9f-83305ccace17.png)
+ 
+    * input value값을 가져와 상태값을 변경하는 코드이다.
+    * ...(스프레드 연산자)과 [e.target.name](속성 접근자) 문법을 사용해 상태값을 변경한다.
+    
+ ![스크린샷, 2022-03-17 00-45-07](https://user-images.githubusercontent.com/94499416/158630547-f206a0d6-1366-411b-9a3b-e42b6bc1b157.png)
+ 
+    * useRef() 파라미터 값을 넣어주면 해당 값이 변수의 current 값이 된다.
+    * 프레드 연산자를 사용해 불변성을 지키면서 배열에 새 항목을 추가한다.
+    * next_id 변수를 수정, 조회를 한다면 current 값을 수정하거나 조회한다.
+    * 배열에 새 항목이 생긴다면 next_id 변수에 1씩 더하여 업데이트 한다.
