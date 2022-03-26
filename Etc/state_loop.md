@@ -10,7 +10,7 @@
   
   ![Peek 2022-03-26 14-13](https://user-images.githubusercontent.com/94499416/160225735-c08d4304-dfd3-4e51-ab5c-4cebcb77c8f9.gif)
 
-    * 위 이미지는 초기값이 객체 형식으로 구성된 useState를 loop문으로 돌려서 구현한 탭메뉴이다.
+    * 위 이미지는 초기값이 객체 형식으로 구성된 useState를 loop문으로 돌려서 구현한 간단한 탭메뉴이다.
   
   ## A. 객체 형식의 state 초기값 구성하기
   
