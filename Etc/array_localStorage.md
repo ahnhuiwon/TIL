@@ -24,7 +24,7 @@
   
   ## localStorage에 데이터가 잘 저장되는 모습
   
-  ![image](https://user-images.githubusercontent.com/94499416/161206013-af0b3a3e-2198-45d7-b3bf-3fe25b46635b.png)
+  ![image](https://user-images.githubusercontent.com/94499416/161206312-0dd7e8a9-95f0-4570-abf3-ff299a01977b.png)
   
   ![image](https://user-images.githubusercontent.com/94499416/161206076-ab41a27a-d9d1-4c77-8be3-41bddfbb005e.png)
   
