@@ -2,7 +2,7 @@
   ## localStorage에 배열 데이터 저장하기
   
     * 프로젝트중 현재 날짜를 고정으로 두고 배열 형식에 데이터를 로컬에서 가져오면서 저장할 필요가 생겼다.    
-    * 하지만 localStorage 또는 sessionStorage는 문자열로 데이터가 저장이 된다. Storage 데이터를 배열로 가져오고 배열로 사용하는 방법은 없을까?
+    * 하지만 localStorage는 문자열로 데이터가 저장이 된다. Storage 데이터를 배열로 가져오고 배열로 사용하는 방법은 없을까?
     
     
   ## localStorage 데이터를 가져와 null값 구분하기
