@@ -4,7 +4,7 @@ Today I Learned
   <li>useEffect</li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/useReducer.md">useReducer</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/useRef.md">useRef</a></li>
-  <li>react-router-dom</li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/redux.md">react-router-dom</a></li>
 </ul>
 
 <ul>Redux
