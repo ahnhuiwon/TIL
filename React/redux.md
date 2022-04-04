@@ -12,6 +12,7 @@
     * 리액트로만 프로젝트를 진행하게 될 경우 어플리케이션은 local state, global state를 관리하기 어렵다.
 
   
+  
     ## local state 전달의 어려움
   
     ![cart_flow_chart](https://user-images.githubusercontent.com/94499416/161573452-e84ea092-1d49-47e0-804d-555563debb98.png)
@@ -21,6 +22,7 @@
       * 허나 리덕스를 사용한다면 하나의 store를 통해 global state 및 모든 state를 저장 유지 할 수 있다.
 
 
+
     ## Flux 구조
   
     ![flux_img](https://user-images.githubusercontent.com/94499416/161574600-22c71838-f270-497c-967c-0b4db16e9f11.png)
@@ -28,6 +30,7 @@
       * 페이스북에서 만든 클라이언트 사이드 웹 어플리케이션을 구축할때 사용하는 앱구조, 디자인 패턴이다.
       * MVC구조의 단점을 보완할 목적으로 개발되었으며 대규모 프로젝트에서 너무 복잡해지는 MVC 구조의 단점을 보완하는 단방향 데이터 흐름의 구조이다.
       * Flux를 소개하는 이유는 리덕스가 Flux의 구현체라고 할 수도 있기 때문이다.
+
 
 
     ## Flux VS Redux
