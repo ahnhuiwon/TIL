@@ -43,6 +43,18 @@
       * 결론적으로 Flux, 리덕스 두 구조는 모두 닮았으며 리덕스는 Flux 패턴을 좀 더 쉽고 정돈된 형태로 쓸 수 있게 해주는 라이브러리라고 볼 수 있다. 
 
 
+    ## Redux 모듈 설치
+
+    * Redux 모듈 설치
+      * yarn add redux react-redux를 입력해 두 모듈을 설치한다.
+      * npm install redux, npm install react-redux를 입력해 두 모듈을 설치한다.
+    
+    * Reduxt-devtools
+      * npm install -D redux-devtools를 입력해 개발자 툴킷을 설치한다.
+      * 스토어 값이 바뀌는 상태를 쉽게 확인 할 수 있다.
+      * 개발단계에서만 사용한다면 옵션 -D를 붙여주면된다.
+
+
    # Redux 기본개념
   
    ## A. store(스토어)
