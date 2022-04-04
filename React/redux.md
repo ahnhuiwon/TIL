@@ -45,7 +45,7 @@
 
    # Redux 기본개념
   
-    ## A. store(스토어)
+   ## A. store(스토어)
     
    ![스크린샷, 2022-04-05 00-43-23](https://user-images.githubusercontent.com/94499416/161581474-79370a66-1698-45c8-9412-0cc12dd66524.png)
     
@@ -54,7 +54,7 @@
       * 위 코드에서 createStore의 두번째 인자는 개발자 도구를 적용하기 위한 코드이다.
       
       
-    ## B. Reducers(리듀서)
+   ## B. Reducers(리듀서)
     
    ![스크린샷, 2022-04-05 00-35-50](https://user-images.githubusercontent.com/94499416/161580021-fa204e6c-3178-4042-b4eb-7f5663553896.png)
     
@@ -63,7 +63,7 @@
       * 위 코드에는 action을 sertState처럼 쓸 수 있는 SET_STRING을 만들어 주었다.
       * 기존 state 객체를 복사, string_data라는 key와 action에서 받아오는 payload를 value로 state를 변경하는 역할을 한다.
      
-    ## C. action(액션)
+   ## C. action(액션)
     
    ![스크린샷, 2022-04-05 00-35-50](https://user-images.githubusercontent.com/94499416/161580021-fa204e6c-3178-4042-b4eb-7f5663553896.png)
     
