@@ -72,4 +72,40 @@
       * 위 코드에서 set_string은 string이라는 새로 변경해줄 데이터를 받아서 reducer에 전달해주는 액션이다.
       
       
+   # Store에 있는 state 사용하기
+   
+   ## A. index.js
+   
+   ![스크린샷, 2022-04-05 00-52-34](https://user-images.githubusercontent.com/94499416/161583317-38b926f7-0cd6-470c-9ef6-8c9c7d16afbc.png)
+   
+      * index.js 파일에서 Provider를 통해 store를 하위 컴포넌트들에게 전달해준다.
+   
+   
+   ## B. store의 state값을 변경하는 컴포넌트
+   
+   ![스크린샷, 2022-04-05 00-56-14](https://user-images.githubusercontent.com/94499416/161583906-5efad1b9-733a-46a3-a8ad-3d96e522d5ad.png)
+   
+      * 컴포넌트에서 액션을 통해 store에 있는 state를 변경하기 위해선 connect를 사용해 mapDispatchToProps와 해당 컴포넌트(Order.js)를 연결해야한다.
+      * connect의 첫번째 인자는 아래에서 후술할 mapStateToProps인데 state를 변경만하기 떄문에 null값으로 둔다.
+      
+      
+   ## C. store의 state값을 사용하는 컴포넌트
+   
+   ![스크린샷, 2022-04-05 01-01-55](https://user-images.githubusercontent.com/94499416/161584947-6152f090-23de-4e0a-91e4-73bc3442ea5f.png)
+   
+      * 컴포넌트에서 store에 있는 state(string)를 사용하려면 connect 함수를 이용해 mapStateToProps와 Header 페이지를 연결한다.
+      * 연결해주고나면 <Header> 컴포넌트 안에 존재하는 <Example> 컴포넌트에서 props.strings로 state 값을 사용할 수 있다.
+      
+   
+   ## D. 마무리
+   
+   ![스크린샷, 2022-04-05 01-08-44](https://user-images.githubusercontent.com/94499416/161586240-2ade72e6-3e37-45bb-8141-0e435b47367c.png)
+   
+   * 어플리케이션 구조는 다음과 같다.
+   * 만약 리덕스를 사용하지 않았다면 props는 Order.js => App.js => Header.js => Example.js로 흘러가는 귀찮은 코드를 짰을거다.
+   * 아래 이미지는 Order.js 컴포넌트에서 redux를 사용해 state값 변경시 Example.js에서도 변경된 state값이 출력이 되는 이미지이다.
+   
+   ![Peek 2022-04-05 01-15](https://user-images.githubusercontent.com/94499416/161587309-a04c2c3a-36dc-4dcb-ba69-4d25f8d0e040.gif)
+      
+      
       
