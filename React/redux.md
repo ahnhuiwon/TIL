@@ -49,7 +49,7 @@
       * yarn add redux react-redux를 입력해 두 모듈을 설치한다.
       * npm install redux, npm install react-redux를 입력해 두 모듈을 설치한다.
     
-    * Reduxt-devtools
+    * Reduxt-devtools 
       * npm install -D redux-devtools를 입력해 개발자 툴킷을 설치한다.
       * 스토어 값이 바뀌는 상태를 쉽게 확인 할 수 있다.
       * 개발단계에서만 사용한다면 옵션 -D를 붙여주면된다.
@@ -72,7 +72,7 @@
     
       * action을 통해 어떠한 행동을 정의했다면, 그 결과 어플리케이션의 상태가 어떻게 바뀌는지 특정하는 함수이다.
       * state와 action이 들어가며, state에 초기값을 지정해줄 수 있다.
-      * 위 코드에는 action을 sertState처럼 쓸 수 있는 SET_STRING을 만들어 주었다.
+      * 위 코드에는 action을 setState처럼 쓸 수 있는 SET_STRING을 만들어 주었다.
       * 기존 state 객체를 복사, string_data라는 key와 action에서 받아오는 payload를 value로 state를 변경하는 역할을 한다.
      
    ## C. action(액션)
