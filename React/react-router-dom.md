@@ -56,3 +56,10 @@
   ![image](https://user-images.githubusercontent.com/94499416/162698216-aa63ee78-ef10-4111-a617-d533cc739754.png)
   
     * useHistory중 { go, back, goForward } 해당 위치, 이전, 다음으로의 기능을 해왔다. 이 부분도 navigate로 통일하고 index를 넣어 동일한 역할을 수행한다.
+
+
+* 왜 react-router-dom v6로 변화했는가?
+
+    React suspense와의 호환성을 더 높이기 위해 변환했다. 예를 들어 이전의 클릭이 로딩 중인 상태에선 다른 라우트의 링크를 클릭한 경우와 같이
+    pending이 충돌되는 경우에 더 부드러운 경험을 제공한다. navigate API는 이전의 pending 작업을 알아채 해당 내용을 history에 PUSH하는 것이 아닌
+    REPLACE함으로써 로드되지 않은 기록으로 끝나지 않게한다.
