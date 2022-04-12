@@ -5,7 +5,7 @@ Today I Learned
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/useReducer.md">useReducer</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/useRef.md">useRef</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/react-router-dom.md">react-router-dom v6</a></li>
-  <li>Swiper</li>
+  <li>React-Swiper</li>
 </ul>
 
 <ul>Redux
