@@ -8,7 +8,7 @@ Today I Learned
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/React-Swiper.md">React-Swiper</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/state_loop.md">React 초기값이 객체로 구성된 state값, 반복문으로 속성값 변경하기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/parent_child.md">React 하위 컴포넌트에서 상위 컴포넌트로 데이터 전달하기</a></li>
-  <li><a href="#">React에서 우편번호 api 사용하기</a></li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/zip_code_api.md">React에서 우편번호 api 사용하기</a></li>
 </ul>
 
 <ul>Redux
