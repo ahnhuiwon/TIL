@@ -68,7 +68,8 @@
       
    ## B. Reducers(리듀서)
     
-   ![스크린샷, 2022-05-04 10-04-57](https://user-images.githubusercontent.com/94499416/166610658-a44181ea-881c-4980-b915-63b65461cd08.png)
+   ![스크린샷, 2022-05-04 10-04-57](https://user-images.githubusercontent.com/94499416/166610658-a44181ea-881c-4980-b915-63b65461cd08.png) <br>
+   ![스크린샷, 2022-05-04 10-05-19](https://user-images.githubusercontent.com/94499416/166610661-ca16010d-9e2b-4224-88dc-4e559aa834e7.png)
     
       * action을 통해 어떠한 행동을 정의했다면, 그 결과 어플리케이션의 상태가 어떻게 바뀌는지 특정하는 함수이다.
       * state와 action이 들어가며, state에 초기값을 지정해줄 수 있다.
