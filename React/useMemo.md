@@ -95,7 +95,7 @@ export default ShowProps;
 
 아래와 같은 console.log를 확인할 수 있다.
 
-> 숫자가 변동됨
+> 숫자가 변동됨 <br/>
 > 이름이 변동됨
 
 무엇이 문제점인지 바로 알 수 있다. 
@@ -105,6 +105,8 @@ export default ShowProps;
 **변경하고자 하는 상태값이 아닌 함수도 실행이 되는 비효율적이고 낭비**라고 생각할 수 있다.
 
 이럴 때 useMemo를 사용하는것이다.
+
+<br />
 
 ShowProps내에서 useMemo를 써보자.
 
