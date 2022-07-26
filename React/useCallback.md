@@ -132,3 +132,36 @@ export default App;
 useMemo와 useCallback은 유사한 점이 많지만 분명한 차이점이 있다.
 
 이 두가지 hook이 어떻게 다르고 써야하는지를 알아보자.
+
+```
+// useCallback을 사용한 코드
+const get_number = useCallback((param) => {
+    return [
+      number + param, 
+      number + param + 1, 
+      number + param + 2];
+  }, [number])
+
+// useMemo를 사용한 코드
+const get_number = useMemo(() => param => {
+  return [
+    number + param,
+    number + param + 2,
+    number + param + 3
+  ]
+}, [number])
+```
+
+위 두 코드의 차이점을 확인해보자.
+
+useCallback(함수, 의존성 배열)은 useMemo(()=> 함수, 의존성 배열)과 같다.
+
+그렇다면 이렇게 선언을 해줘야하는 이유는 무엇인가?
+
+>useMemo는 함수를 반환하지 않고, 함수의 값만 메모리에 저장해 동일한 계산의 반복 수행을 제거한다.
+>useCallback은 함수 자체를 메모리에 저장해 동일한 계산의 반복 수행을 제거하는데
+>이 차이점이 useMemo와 useCallback의 핵심적인 차이인 것이다.
+  
+결론은 하위 컴포넌트에서 특정한 props값의 변화를 최적화 시키고 싶다면 useMemo를
+
+상위 컴포넌트에서 계산량이 많은 props 함수를 자식 컴포넌트로 넘기고 싶을떄는 useCallback을 쓰는것이 좋다.
