@@ -26,3 +26,64 @@ const { my_data, temp_data }  = useSelector(state => ({
 ```
 
 위 코드를 참고해서 **useSelector**를 사용하는 간단한 예제를 만들어보자.
+
+```
+
+//App.js
+
+import './App.css';
+import { useSelector } from 'react-redux';
+import ShowRedux from './component/ShowRedux';
+
+function App() {
+
+  const redux_data = useSelector(state => state.my_data);
+
+  return (
+    <div className="App">
+      <h1>상위 컴포넌트</h1>
+      <p>{redux_data}</p>
+      <ShowRedux />
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+```
+
+//ShowRedux.js
+
+import React from "react";
+import { useDispatch } from "react-redux/es/exports";
+import { set_data } from "../redux/action";
+
+const ShowRedux = () => {
+
+    const dispatch = useDispatch();
+
+    const change_state = (e) => {
+        const { value } = e.target;
+
+        dispatch(set_data(value));
+    }
+
+    return(
+        <>
+            <h1>하위 컴포넌트</h1>
+            <input onChange={(e)=>{change_state(e)}}/>
+        </>
+    )
+}
+
+export default ShowRedux;
+
+```
+
+위 코드는 하위 컴포넌트인 ShowRedux에서 input은 onChange 이벤트를 감지하면
+
+dispatch를 통해 리덕스 상태값을 input value의 값으로 변경하고
+
+상위 컴포넌트인 App에서 useSelector를 이용해 변경된 리덕스 상태값을 가져와 렌더링 시켜주는 아주 간단한 코드이다.
