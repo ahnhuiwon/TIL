@@ -87,3 +87,5 @@ export default ShowRedux;
 dispatch를 통해 리덕스 상태값을 input value의 값으로 변경하고
 
 상위 컴포넌트인 App에서 useSelector를 이용해 변경된 리덕스 상태값을 가져와 렌더링 시켜주는 아주 간단한 코드이다.
+
+### `useSelector 최적화`
