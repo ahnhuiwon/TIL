@@ -16,6 +16,7 @@ Today I Learned
 
 <ul>Redux
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/redux.md">Redux</a></li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/selector_dispatch.md">useSelector와 useDispatch</a></li>
 </ul>
 
 <ul>mongoDB
