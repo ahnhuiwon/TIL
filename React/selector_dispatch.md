@@ -1,4 +1,4 @@
-## useSelector
+## useSelector와 useDispatch
 
 ### `useSelector란 무엇인가?`
 
@@ -7,6 +7,12 @@
 이전에 언급했던 connect를 통해 상태값을 조회하는 것보다 훨씬 간결하고
 
 가독성이 상승되는 장점이 있는 함수이다.
+
+### `useDispatch란 무엇인가?`
+
+redux의 액션 함수를 실행시켜
+
+redux-store에 변경된 state값을 저장하기 위한 hooks
 
 ### `useSelector 사용법`
 
@@ -25,7 +31,17 @@ const { my_data, temp_data }  = useSelector(state => ({
 
 ```
 
-위 코드를 참고해서 **useSelector**를 사용하는 간단한 예제를 만들어보자.
+### `useDispatch 사용법`
+
+```
+
+const disaptch = useDispatch();
+
+dispatch(set_data(value));
+
+```
+
+위 코드를 참고해서 **useSelector와 useDispatch**를 사용하는 간단한 예제를 만들어보자.
 
 ```
 
