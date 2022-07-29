@@ -89,3 +89,7 @@ dispatch를 통해 리덕스 상태값을 input value의 값으로 변경하고
 상위 컴포넌트인 App에서 useSelector를 이용해 변경된 리덕스 상태값을 가져와 렌더링 시켜주는 아주 간단한 코드이다.
 
 ### `useSelector 최적화`
+
+useSelector는 문제가 있는데 이 문제를 알아보기 위해
+
+코드를 작성해보자.
