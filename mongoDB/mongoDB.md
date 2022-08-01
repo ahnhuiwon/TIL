@@ -1,56 +1,81 @@
 ## mongoDB
 ### `mongoDB란 무엇인가?`
 
-Hyper Text Transfer Protocol의 약자로,
+MongoDB는 C++로 작성된 오픈소스 문서지향적 크로스 플랫폼 데이터 베이스이며,
 
-텍스트 기반의 통신 규약으로 인터넷에서 데이터를 주고 받을 수 있는 통신 규약이다.
+뛰어난 확장성과 성능을 자랑한다.
 
-이렇게 통신 규약을 정했기 때문에 모든 프로그램이 이 규약에 맞춰 개발하기 때문에 서로 정보를 교환할 수 있다.
+현존하는 NoSQL 데이터 베이스중 인지도 1위를 유지하고 있다.
 
-### `HTTP 동작`
+### `NoSQL이란?`
 
-사용자가 브라우저를 통해 어떤 서비스를 URL를 통하거나 다른 방식으로
+NoSQL은 SQL이 없는 데이터베이스인가? 라는 생각을 할 수 있지만,
 
-요청을 하면 서버에서는 요청 사항에 맞는 결과를 찾아 사용자에게 응답하는 형태로 동작한다.
+진짜 의미는 Not Only SQL이다. 기존 RDBMS의 한계를 극복하기 위해 만들어진 새로운 형태의 데이터 저장소이다.
 
-요청 : 사용자 -> 서버
-응답 : 서버 -> 사용자
+관계형 DB가 아니기 때문에 RDMS처럼 고정된 스키마 및 JOIN이 존재하지 않는다.
 
-### `HTTP 특징`
+### `SQL과 NoSQL 비교`
 
-1. HTTP 메세지는 HTTP서버와 HTTP 클라이언트에 의해 해석된다.
-
-2. TCP / IP를 이용하는 응용 프로토콜이다.
-
-   > 컴퓨터간에 데이터를 전송할 수 있도록 하는 장치로 인터넷을 통해 원하는 데이터를 주고 받는 기능을 이용한 응용 프로토콜.
-3. 연결 상태를 유지하지 않는 비연결성 통신 규약이다.
-
-   > 이러한 단점을 해결하기 위해 Cookie와 Session이 등장했다.
-4. HTTP는 연결을 유지하지 않는 통신 규약이기 때문에 요청 / 응답 방식으로 작동한다.
-
-### `URL이란?` 🔥
-
-Uniform Resource Locator의 약자로
-
-통합 작업 지시자로 인터넷의 리소스를 가르키는 표준 명칭으로
-
-서버의 자원을 요청할때 사용된다.
+![mongo_pic](https://user-images.githubusercontent.com/94499416/182065364-ad2e7168-ea81-4f87-923f-6f92a3c76596.png)
 
 <br />
 
-<img src="../../cs_images/url.png" alt="url 이미지">
+![mongo_table](https://user-images.githubusercontent.com/94499416/182065368-08b5f71d-dc2d-4001-9951-9dce42ae7e46.png)
 
 <br />
 
-사용자 측에서 웹 서버에 자원을 요청하면 웹 서버는 파일 시스템 안에 해당하는 자원을 사용자 측으로 전송한다.
+성능면과 확장성면에서는 NoSQL이 SQL보다 우수하다. 또한 유연하고 복잡성이 낮은것이 특징이다.
 
-만약 자원을 지정하지 않고 www.test.co.kr 같은 사이트 도메인만 호출 한다면 웹 서버에 설정이 되어있는 기본 자원을 호출한다.
+허나 좋은점만 있는것은 아니며 ACID 트랜잭션(원자성 / 일관성 / 고립성 / 영구성)을 보장받기 위해서는 RDBMS를 쓰는 것이 좋다.
 
-### `HTTP/1.1과 HTTP/2.0의 차이`
+은행 혹은 회사 업무 같은 중요한 DB는 RDBMS를 쓰느 것을 권장한다.
 
-빠른 이해를 위해 아래 이미지를 한번 보자.
+결론적으로 SQL, NoSQL 뭐가 더 좋은가를 가리는게 아니라 사용하는 용도에 따라 선택하면 된다.
 
-<img src="../../cs_images/http_diff.png" alt="http 차이">
+### `MongoDB 알아보기` 🔥
+
+#### `1. Document`
+
+Document를 RDBMS에서의 Row와 동일한 개념으로 본다.
+
+예를 들어 아래 코드와 같은 JSON 형태의 key-value 쌍으로 이루어진 데이터 구조를
+
+하나의 Document라고 보면 된다.
+
+<br />
+
+```
+
+{
+    "_id": "5f2ad6b54866e5109dd2367b"
+    "username": "홍길동",
+    "hashedPassword": "비밀번호",
+}
+
+```
+
+<br />
+
+각 Document를 `_id`를 갖고 있는데 이 값은 유일하며 Primary Key랑 동일한 개념이다.
+
+특이하게도 RDBMS처럼 스키마로 정해진 무언가가 없는데 따라서 username, hashedPassword 밑에다가
+
+email 추가한 Document를 새로 생성해도 문제 없이 동작한다.
+
+<br />
+
+#### `2. Collection`
+
+Collection은 Document의 그룹이다. RDBMS로 따진다면 Table과 비슷한 개념.
+
+다만 위에서 언급했듯이 스키마를 가지고 있지 않다.
+
+#### `3. Database`
+
+Database는 Collection들의 물리적인 컨테이너이자 가장 상위 개념이다. 
+
+RDBMS에서의 Database와 동일하다.
 
 <br />
 
