@@ -20,7 +20,7 @@ Today I Learned
 </ul>
 
 <ul>mongoDB
-  <li>mongoDB란?</li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/mongoDB/mongoDB.md">mongoDB란?</a></li>
 </ul>
 
 <ul>Etc
