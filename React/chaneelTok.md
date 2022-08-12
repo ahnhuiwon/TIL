@@ -47,6 +47,6 @@ ChannelService.boot({
 
 ### pluginKey 확인하기
   
-![tok3](https://user-images.githubusercontent.com/94499416/184271740-4e4b57ad-ba16-459a-bc47-494830b1ebea.png)
+![tok3](https://user-images.githubusercontent.com/94499416/184272268-81cbf81e-4d65-4a12-93e3-54e3da550467.jpg)
   
 플러그인키는 로그인 후 위 이미지 경로에서 확인할 수 있다.
