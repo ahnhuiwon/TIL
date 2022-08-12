@@ -50,3 +50,11 @@ ChannelService.boot({
 ![tok3](https://user-images.githubusercontent.com/94499416/184272268-81cbf81e-4d65-4a12-93e3-54e3da550467.jpg)
   
 플러그인키는 로그인 후 위 이미지 경로에서 확인할 수 있다.
+
+<br />
+
+![tok4](https://user-images.githubusercontent.com/94499416/184272519-1a2681d1-b4bc-4f03-97a3-3ca228bf772e.PNG)
+
+잘 적용이된 모습이다.
+
+<br />
