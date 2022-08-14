@@ -29,39 +29,60 @@
 
 <br />
 
-![CDN2](https://user-images.githubusercontent.com/94499416/184267344-8f9b96d1-7460-4a63-89fb-3955ec23e624.png)
-  > 왼쪽이 CDN 미사용, 오른쪽이 CDN 사용 이미지
-<br />
-
-이때 CDN의 동작을 살펴보면 다음과 같은 규칙으로 수행된다.
-
-1. 최초 요청은 서버로부터 컨텐츠를 가져와 고객에게 전송하며 동시에 CDN 캐싱 장비에 저장한다.
-
-2. 최초 요청 이후로의 요청은 CDN에서 지정하는 해당 컨텐츠의 만료 시점까지 캐싱된 컨텐츠를 전송한다.
-
-3. 자주 사용하는 페이지에 한해 캐싱되며, 해당 컨텐츠의 호출이 없을 경우 주기적으로 삭제된다.
-
-4. 서버가 파일을 찾는데 실패할 경우, CDN 플랫폼의 다른 서버에서 컨텐츠를 찾은 다음 엔드 유저에게 응답을 전송한다.
-
-5. 컨텐츠를 사용할 수 없거나 오래된 경우 CDN은 향후 요청에 대해 응답할 수 있도록 새로운 컨텐츠를 저장한다.
+![redux-middleware](https://user-images.githubusercontent.com/94499416/184522895-3fd1160c-2a98-452d-84f9-9060fe7b965c.png)
 
 <br />
 
-### `CDN 캐싱 방식`
+### `Middleware 만들기`
 
-#### `Static Caching`
+액션이 디스패치 될때마다 액션의 정보와 액션이 디스패치되기 전후의 상태를 콘솔에 보여 주는 로깅 미들웨어를 작성해보자.
 
-  - Origin Server에 있는 Contentㄹ르 운영자가 미리 Cache Server에 복사 해두어 사용자가
-    Cache Server에 content 요청 시 무조건 Cache Server에 있다.
-  
-  - 대부분의 국내 CDN에서 이 방식을 사용 (게임 클라이언트 다운로드 등)
+<br />
 
-#### `Dynamic Caching`
-    
-  - Origin Server에 있는 컨텐츠를 운영자가 미리 Cache Server에 복사하지 않음
-  - 사용자가 컨텐츠를 요청 시 해당 컨텐츠가 없는 경우 Origin Server로부터 다운로드 받아 전달한다.
-    있는 경우에는 캐싱된 Content 전달
-  - 각각의 Content는 일정 시간 이후 Cache Server에서 삭제 될 수도 있다.
+```
+
+const logger_middleware = store => next => action => {
+  // 미들웨어 기본 구조
+}
+
+export default logger_middleware;
+
+```
+
+<br />
+
+위 코드에서 리덕스 미들웨어의 구조를 볼 수 있는데 코드를 보고 머리가 어질어질 할거다. 
+
+화살표 함수를 연달아서 사용했는데 일반 function을 사용해서 풀어서 쓴다면 다음과 같은 구조다.
+
+<br />
+
+```
+
+const logger_middleware = function logger_middleware(store) {
+  return function(next){
+    return function(store){
+      // 미들웨어 기본 구조
+    }
+  }
+}
+
+```
+
+<br />
+
+미들웨어는 결국 함수를 반환하는 함수이다. 
+
+위 코드에 함수에서 파라미터로 받아오는 파라미터는
+  > store -> 리덕스 스토어 <br />
+  > action -> 디스패치된 액션
+
+next 파라미터는 함수 형태이며, store.dispatch와 비슷한 역할을 하지만 큰 차이점이 있다.
+
+next를 호출하면 그 다음 처리해야 할 미들웨어에게 액션을 넘겨주고, 만약 그 다음 미들웨어가 없다면
+
+
+
 
 <br />
 
