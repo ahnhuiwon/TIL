@@ -93,11 +93,15 @@ redux-thunk는 비동기 작업을 할 때 가장 많이 사용하는 미들웨�
 
 객체가 아닌 함수 형태의 액션을 디스패치 할 수 있게 해준다.
 
+<br />
+
 **Thunk란 ?**
 
 Thunk는 특정 작업을 나중에 할 수 있도록 미루기 위해 함수 형태로 감싼 것을 의미한다.
 
 아래는 주어진 파라미터에 1을 더하는 함수이다.
+
+<br />
 
 ```
 
@@ -110,11 +114,15 @@ add_one(1);
 
 ```
 
+<br />
+
 이 코드를 실행하면 add_one을 호출했을때 바로 1+1이 연산된다.
 
 만약 이 연산 작업을 나중에 하도록 미루고 싶다면 어떻게 해야할까? 아래 코드를 보자.
 
 아래 코드는 add_one 함수의 작업을 나중에 하도록 미룬 함수다.
+
+<br />
 
 ```
 
@@ -141,11 +149,15 @@ setTimeout(()=>{
 
 ```
 
+<br />
+
 실행하면 func_run이 실행되는 시점에서 연산하기 때문에 value는 undefined가 뜨며
 
 1초 뒤 화면에 2라는 숫자가 렌더링된다.
 
 아래 코드는 위 function 키워드를 이용한 코드를 화살표 함수로 변경한 코드이다.
+
+<br />
 
 ```
 
@@ -164,11 +176,15 @@ setTimeout(()=>{
 
 ```
 
+<br />
+
 redux-thunk 라이브러리를 사용한다면 thunk 함수를 만드렁서 디스패치 할 수 있다.
 
 그 후 리덕스 미들웨어가 그 함수를 전달받아 store의 dispatch와 getState를 파라미터로 넣어서 호출해준다.
 
 다음은 redux-thunk에서 사용할 수 있는 예시 thunk이다.
+
+<br />
 
 ```
 
@@ -178,6 +194,8 @@ const sample_thunk = () => (dispatch, getState) => {
 }
 
 ```
+
+<br />
 
 ### `Redux-thunk 웹 요청 비동기 작업을 처리하기`
 
@@ -206,6 +224,8 @@ export const get_post_api = id =>
 
 예상치못한 response를 반환했던것인데 나중에 다루고자 한다. 
 
+<br />
+
 ```
 
 // lib/api.js
@@ -217,6 +237,8 @@ export const get_post_api = id => {
 }
 
 ```
+
+<br />
 
 **2. reducer 생성**
 
@@ -298,6 +320,8 @@ export default sample
 
 ```
 
+<br />
+
 **3. root reducer에 포함**
 
 ```
@@ -312,6 +336,8 @@ const root_reducer = combineReducers({
 export default root_reducer
 
 ```
+
+<br />
 
 **4. 컴포넌트 제작**
 
@@ -352,3 +378,6 @@ export default connect(
 
 
 ```
+
+<br />
+
