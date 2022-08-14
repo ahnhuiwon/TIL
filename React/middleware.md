@@ -178,3 +178,177 @@ const sample_thunk = () => (dispatch, getState) => {
 }
 
 ```
+
+### `Redux-thunk 웹 요청 비동기 작업을 처리하기`
+
+본격적으로 Redux-thunk를 사용해 웹 요청 비동기 작업을 처리해보자.
+
+구현할 기능은 input에 값을 넣으면 JSONPlaceholder에서 제공하는 값에 맞는 post 데이터를 가져오는것이다.
+
+**1. API 호출**
+
+```
+
+// lib/api.js
+
+import axios from 'axios'
+
+export const get_post_api = id =>
+  axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+
+```
+
+먼저 API를 호출하는 코드를 작성한다. 
+
+여담이지만 {}를 넣었더니 response값으로 Promise를 반환해 당황했던적이 있다.
+
+위 코드는 사실 아래 코드를 줄인것이다. () => {} 작성시 {}안에 return을 넣지 않아서
+
+예상치못한 response를 반환했던것인데 나중에 다루고자 한다. 
+
+```
+
+// lib/api.js
+
+import axios from 'axios'
+
+export const get_post_api = id => {
+  return axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+}
+
+```
+
+**2. reducer 생성**
+
+```
+
+// modules/sample.js
+
+import { handleActions } from 'redux-actions'
+import * as api from '../lib/api'
+
+// 액션 타입을 선언
+// 한 요청당 시작, 성공, 실패 세개를 만들어야 한다.
+
+const GET_POST = `sample/GET_POST`
+const GET_POST_SUCCESS = `sample/GET_POST_SUCCESS`
+const GET_POST_FAIL = `sample/GET_POST_FAIL`
+
+// thunk 함수 생성
+// 시작, 성공, 실패할때 다른 액션을 디스패치
+
+export const get_post = id => async dispatch => {
+  dispatch({ type: GET_POST }) // 요청 시작
+  try {
+    const response = await api.get_post_api(id)
+    dispatch({
+      type: GET_POST_SUCCESS,
+      payload: response.data,
+      console: console.log(response),
+    }) // 요청 성공
+  } catch (e) {
+    dispatch({
+      type: GET_POST_FAIL,
+      payload: e,
+      error: true,
+    }) // 요청 실패
+    throw e
+  }
+}
+
+// 초기 상태를 선언
+// 요청의 로딩 상태는 loading이라는 객체에서 관리
+
+const initial_state = {
+  loading: {
+    GET_POST: false,
+  },
+  post: null,
+}
+
+const sample = handleActions(
+  {
+    [GET_POST]: state => ({
+      ...state,
+      loading: {
+        ...state.loading,
+        GET_POST: true,
+      },
+    }),
+    [GET_POST_SUCCESS]: (state, action) => ({
+      ...state,
+      loading: {
+        ...state.loading,
+        GET_POST: false,
+      },
+      post: action.payload,
+    }),
+    [GET_POST_FAIL]: state => ({
+      ...state,
+      loading: {
+        ...state.loading,
+        GET_POST: false,
+      },
+    }),
+  },
+  initial_state
+)
+
+export default sample
+
+```
+
+**3. root reducer에 포함**
+
+```
+
+import { combineReducers } from 'redux'
+import sample from './sample'
+
+const root_reducer = combineReducers({
+  sample,
+})
+
+export default root_reducer
+
+```
+
+**4. 컴포넌트 제작**
+
+```
+
+import react from 'react'
+import { connect } from 'react-redux'
+import Sample from './Sample'
+import { get_post } from '../modules/sample'
+
+const SampleContainer = ({ get_post, post, loading_post }) => {
+  const change_id = param => {
+    const { value } = param.target
+
+    get_post(value)
+  }
+
+  return (
+    <>
+      <input
+        type="number"
+        onChange={e => {
+          change_id(e)
+        }}
+      />
+      <Sample post={post} loading_post={loading_post} />
+    </>
+  )
+}
+
+export default connect(
+  ({ sample }) => ({
+    post: sample.post,
+    loading_post: sample.loading.GET_POST,
+  }),
+  { get_post }
+)(SampleContainer)
+
+
+```
