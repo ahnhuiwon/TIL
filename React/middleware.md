@@ -379,5 +379,12 @@ export default connect(
 
 ```
 
+Sample 컴포넌트는 props값을 단순히 출력하는 용도라 이 글에서는 제외했다.
+
 <br />
+
+**5. 구현된 모습**
+
+![Peek 2022-08-14 16-38](https://user-images.githubusercontent.com/94499416/184527264-da23613b-fe81-410b-b74e-9094b1f81dc0.gif)
+
 
