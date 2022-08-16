@@ -119,7 +119,8 @@ function* watch_gener(){
     }
 }
 
-``
+```
+
 <br />
 
 ![스크린샷, 2022-08-16 23-50-49](https://user-images.githubusercontent.com/94499416/184910498-8ccda2ee-7fa4-49a9-a85d-a51f401ccb85.png)
