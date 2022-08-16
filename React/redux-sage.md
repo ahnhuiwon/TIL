@@ -83,6 +83,45 @@ next()를 호출하면 다음 yield가 있는 곳까지 호출하고 다시 함�
 
 <br />
 
+```
 
+function* sum_generator(){
+    console.log('run');
+    let a = yield;
+    let b = yield;
+    yield a+b;
+}
+
+```
+
+<br />
+
+redux-saga는 제너레이터 함수 문법을 기반으로 비동기 작업을 관리해준다.
+
+즉 우리가 디스패치하는 액션을 모니터링하여 그에 따라 필요한 작업을 따로 수행할 수 있는 미들웨어이다.
+
+아래 코드는 redux-saga와 비슷한 코드로 작동하는 코드이다.
+
+<br />
+
+```
+
+function* watch_gener(){
+    console.log('watch...');
+    let prev_action = null;
+    while(true){
+        const action = yield;
+        console.log('prev_action : ', prev_action);
+        prev_action = action;
+        if(action.type === 'MATCH'){
+            console.log('일치');
+        }
+    }
+}
+
+``
+<br />
+
+![스크린샷, 2022-08-16 23-50-49](https://user-images.githubusercontent.com/94499416/184910498-8ccda2ee-7fa4-49a9-a85d-a51f401ccb85.png)
 
 <br />
