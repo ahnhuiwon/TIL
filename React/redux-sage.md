@@ -126,3 +126,132 @@ function* watch_gener(){
 ![스크린샷, 2022-08-16 23-50-49](https://user-images.githubusercontent.com/94499416/184910498-8ccda2ee-7fa4-49a9-a85d-a51f401ccb85.png)
 
 <br />
+
+### `Redux-saga를 활용한 비동기 카운터 구현`
+
+액션 타입을 선언하고 해당 액션에 대한 액셕 생성 함수를 만들다.
+
+그리고 제너레이터 함수를 만드는데 이 제너레이터 함수를 사가(saga)라고 부른다.
+
+<br />
+
+```
+// counter.js
+
+
+import { createAction, handleActions } from 'redux-actions'
+import { delay, put, takeEvery, takeLatest } from 'redux-saga/effects'
+
+// 액션 선언
+const INCREASE = 'counter/INCREASE'
+const DECREASE = 'counter/DECREASE'
+const INCREASE_ASYNC = 'counter/INCREASE_ASYNC'
+const DECREASE_ASYNC = 'counter/DECREASE_ASYNC'
+
+// 액션 생성 
+export const increase = createAction(INCREASE)
+export const decrease = createAction(DECREASE)
+
+// 마우스 클릭 이벤트가 payload안에 들어가지 않도록
+// 두번째 파라미터에 ()=> undefined를 넣어준다.
+export const increaseAsync = createAction(INCREASE_ASYNC, () => undefined)
+export const decreaseAsync = createAction(DECREASE_ASYNC, () => undefined)
+
+function* increase_saga() {
+  yield delay(1000)
+  yield put(increase())
+}
+
+function* decrease_saga() {
+  yield delay(1000)
+  yield put(decrease())
+}
+
+export function* counter_saga() {
+
+  // takeEvery는 들어오는 모든 액션에 대해 특정 작업을 처리
+  yield takeEvery(INCREASE_ASYNC, increase_saga)
+
+  // takeLastest는 기존에 진행 중이던 작업을 취소하고 마지막으로 실행된 작업만 수행
+  yield takeLatest(DECREASE_ASYNC, decrease_saga)
+}
+
+const initial_state = 0
+
+const counter = handleActions(
+  {
+    [INCREASE]: state => state + 1,
+    [DECREASE]: state => state - 1,
+  },
+  initial_state
+)
+
+export default counter
+
+```
+
+<br />
+
+```
+
+// root reducer
+
+import { combineReducers } from 'redux'
+import counter, { counter_saga } from './counter'
+import sample from './sample'
+import loading from './loading'
+import { all } from 'redux-saga/effects'
+
+const root_reducer = combineReducers({
+  counter,
+  sample,
+  loading,
+})
+
+// all 메소드로 여러 사가를 합쳐준다
+export function* root_saga() {
+  yield all([counter_saga()])
+}
+
+export default root_reducer
+
+```
+
+<br />
+
+```
+// src/index.js
+
+
+import { applyMiddleware, createStore, compose } from 'redux'
+import { Provider } from 'react-redux'
+import root_reducer, { root_saga } from './modules'
+//import loggerMiddleware from './lib/loggerMiddleware'
+import { createLogger } from 'redux-logger'
+import ReduxThunk from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const logger = createLogger()
+
+// saga middleware 적용
+const saga_middleware = createSagaMiddleware()
+const store = createStore(
+  root_reducer,
+  composeEnhancer(applyMiddleware(logger, ReduxThunk, saga_middleware))
+)
+
+saga_middleware.run(root_saga)
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+)
+
+```
+
