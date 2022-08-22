@@ -75,3 +75,99 @@ CRA 프로젝트에 기본으로 탑재되어있는 SplitChunks 기능을 통한
 모두 한 파일에 저장되어 버리기 때문에 어플리케이션의 규모가 커진다면 필요하지 않은 코드들도
     
 모두 불러오면서 로딩이 오래 걸리고 트래픽도 많이 나오는 등 문제가 생길 수 있기 때문이다.
+
+### 함수를 스플리팅하는 방법
+    
+<br />    
+
+아래 코드는 Hello React를 클릭하면 notify 함수가 실행되는 코드이다.
+
+```
+
+// notify.jsx
+
+const notify = () => {
+    alert('잘못된 접근입니다.');
+}
+
+export default notify;
+
+```
+
+<br />   
+
+```
+
+// App.js
+
+import logo from './logo.svg';
+import './App.css';
+import notify from './components/notify';
+
+function App() {
+
+  const alert_func = () => {
+    notify();
+  }
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p onClick={alert_func}>Hello React</p>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+<br />   
+
+아래 코드는 위 코드를 스플리팅한 코드이다. 
+
+<br />   
+
+```
+
+// App.js
+
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+
+  const alert_func = () => {
+    import('./components/notify').then(( result )=>{ result.default() });
+  }
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p onClick={alert_func}>Hello React</p>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+
+```
+
+<br />  
+
+코드를 스플리팅 한 뒤 빌드를하면 notify 코드가 main 파일 안에 들어가게 된다.
+
+하지만 위 코드와 같이 상단에서 import를 하지 않고 import() 함수 형태로 메서드 안에서 사용한다면
+
+파일을 따로 분리시켜서 저장하는 특징이 있다.
+
+import 함수를 사용한다면 Promise를 반환하는데 import 함수로 사용하는 문법은 아직 표준 자바스크립트에 해당하지 않지만
+
+현재 웹팩에서 지원하고 있어 별도의 설정 없이 프로젝트에 바로 사용할 수 있다.
+
+그리고 import() 함수를 통해 모듈을 불러올때 default로 내보낸것은 result.default를 참조해야 사용할 수 있다.
