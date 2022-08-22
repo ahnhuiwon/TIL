@@ -22,7 +22,7 @@ CRA(create-react-app)으로 빌드할경우 최소 두 개 이상의 자바스�
 
 <br />    
     
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e78cb8d4-0f0a-47c1-bce5-6f77dd1fc66f/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/94499416/185858311-003823d4-9f63-48ca-96fb-6eac7a7d6c1f.png)
     
 <br />    
     
@@ -44,7 +44,7 @@ CRA(create-react-app)으로 빌드할경우 최소 두 개 이상의 자바스�
 
 내용을 간단하게 변경하고 다시 build를 해보자.
     
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c3b06b5c-f430-4de1-a8f8-6c1aef3e22cb/Untitled.png)
+![Untitled (1)](https://user-images.githubusercontent.com/94499416/185858318-fd5ad7b4-8318-4c84-bdcb-ba245c5323e0.png)
     
 <br />    
     
