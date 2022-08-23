@@ -171,3 +171,193 @@ import 함수를 사용한다면 Promise를 반환하는데 import 함수로 사
 현재 웹팩에서 지원하고 있어 별도의 설정 없이 프로젝트에 바로 사용할 수 있다.
 
 그리고 import() 함수를 통해 모듈을 불러올때 default로 내보낸것은 result.default를 참조해야 사용할 수 있다.
+
+<br />
+
+## 코드를 스플리팅하는 방법
+
+코드 스플리팅은 리액트에 내장된 기능중 React.lazy와 Suspense가 있다. 리액트 16.6 버전부터 도입되었는데
+
+이전 버전에서는 어떤 방법으로 구현했는지 알아보자.
+
+이전 버전은 import 함수를 통해 불러온 다음, 컴포넌트 자체를 state에 넣는 방식이다. 아래 코드를 보자.
+
+```jsx
+
+// SplitComponent.jsx
+
+import React from "react";
+
+const SplitComponent = () => {
+    return(
+        <div>Hello world</div>
+    )
+}
+
+export default SplitComponent;
+```
+
+```jsx
+
+// App.js
+
+import logo from './logo.svg';
+import './App.css';
+import { Component } from 'react';
+
+class App extends Component {
+
+  state = {
+    MySplit : null
+  };
+
+  handle_click = async() => {
+    const load_module = await import('./components/SplitComponent');
+    this.setState({
+      MySplit : load_module.default
+    });
+  };
+
+  render() {
+    const { MySplit } = this.state;
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img className="App-logo" alt="logo" src={logo} />
+          <p  onClick={this.handle_click} >Hello React</p>
+          { MySplit && <MySplit /> }
+        </header>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+이전 버전에서 구현하기 위해서는 class 문법을 사용해야한다.
+
+- handle_click 메소드 내부에서 MySplit 컴포넌트를 불러와 state에 넣는다.
+- render 함수 내부에서 state 안에 있는 MySplit의 값이 유효하다면 MySplt 컴포넌트를 렌더링한다.
+
+아래는 코드 스플리팅이 정삭적으로 이루어진 모습이고 state를 사용해서 스플리팅하는 작업은 
+
+매번 state를 선언해야한다는 단점이 존재한다.
+
+---
+
+## React.lazy와 Suspense 사용
+
+React.lazy는 컴포넌트를 렌더링하는 시점에서 비동기적으로 로딩할 수 있게 해주는 함수이다.
+
+```jsx
+const SplitComponent = React.lazy(() => import('./SplitComponent'));
+```
+
+Suspense는 스플리팅된 컴포넌트를 로딩하도록 할 수 있고, 로딩이 끝나지 않을 경우 보여 줄 UI를 설정 할 수 있다.
+
+```jsx
+import React, { Suspense } from 'react';
+
+(...)
+<Suspense fallback={<div>loading...</div>}>
+  <SplitComponent />
+</Suspense>
+```
+
+React.lazy와 Suspense를 사용해 재밌는 예제를 만들어보자.
+
+```jsx
+// SplitComponent.jsx
+
+import React from "react";
+
+const SplitComponent = ({data}) => {
+
+    console.log(data)
+
+    return(
+        <div>
+            {
+                data.map((data, index)=>(
+                    <>
+                        <p>{data.name}</p>
+                        <p>{data.body}</p>
+                        <p>{data.email}</p>
+                    </>
+                ))
+            }
+        </div>
+    )
+}
+
+export default SplitComponent;
+```
+
+```jsx
+// App.js
+
+import logo from './logo.svg';
+import './App.css';
+import React, { Suspense, useState } from 'react';
+import axios from 'axios';
+import ReactLoading from 'react-loading';
+
+const SplitComponent = React.lazy(()=>import('./components/SplitComponent'));
+
+function App() {
+  
+  const [list_data, set_list_data] = useState([]);
+  const [visible, set_visible] = useState(false);
+
+  const onClick = () => {
+    axios.get(`https://jsonplaceholder.typicode.com/posts/1/comments`)
+    .then((res)=>{
+      set_list_data(res.data);
+    })
+    .catch((err)=>{
+      alert(err);
+    })
+    
+    set_visible(true);
+  }
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p onClick={onClick}>Hello React</p>
+        <Suspense fallback={<ReactLoading type={'spinningBubbles'} color={'white'} width={40} height={40} /> }>
+          { visible && <SplitComponent data={list_data}/> }
+        </Suspense>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+위 코드는 다음과 같은 기능을 한다.
+
+- onClick 메소드 내부에서 axios를 통해 rest api 데이터를 갖고 온다.
+- 성공시 state값에 응답 데이터를 할당해준다.
+- state값을 SplitComponent의 props로 넘겨주고 컴포넌트 내부에서 반복적으로 출력한다.
+- axios 비동기 작업이 끝난다면 visible 상태값을 true로 변경한다.
+
+이 코드를 slow 3g로 변경한 뒤 실행한 화면은 다음과 같다.
+
+![Animation.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a593182-7828-4e57-8493-0ebe768ad1f5/Animation.gif)
+
+---
+
+이 글에서는 코드 스플리팅이 무엇인지와 컴포넌트를 
+
+분리된 파일로 저장하는 방법과 비동기적으로와 사용하는지 정리하였다.
+
+여담으로 서버 사이드 렌더링을 구축할 계획이 없다면 React.lazy와 Suspense로 구현해야하고
+
+만약 계획이 있다면 Loadable Components 라이브러리를 사용하도록 권장하고 있다.
+
+(Loadable Components는 서버 사이드 렌더링 파트에서 정리할 예정이다)
