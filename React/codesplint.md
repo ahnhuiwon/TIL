@@ -348,7 +348,11 @@ export default App;
 
 이 코드를 slow 3g로 변경한 뒤 실행한 화면은 다음과 같다.
 
-![Animation.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a593182-7828-4e57-8493-0ebe768ad1f5/Animation.gif)
+<br />
+
+![Animation](https://user-images.githubusercontent.com/94499416/186093079-a4b4a8f1-2f7c-4adb-82d8-4bb8de0eab99.gif)
+
+<br />
 
 ---
 
