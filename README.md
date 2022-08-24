@@ -24,6 +24,7 @@ Today I Learned
 
 <ul>mongoDB
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/mongoDB/mongoDB.md">mongoDB란?</a></li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/mongoDB/first_query.md">DB와 Document 쿼리</a></li>
 </ul>
 
 <ul>Etc
