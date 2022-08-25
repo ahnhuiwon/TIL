@@ -79,8 +79,6 @@ $("#temp_id").css("display", "none")
 
 $(tag).find(”element”)를 사용해 DOM의 값을 가져왔다.
 
-아래는 return된 크롤링 데이터들을 담은 temp_arr을
-
-콘솔로 찍어낸 값이다.
+아래는 return된 크롤링 데이터들을 담은 temp_arr을 콘솔로 찍어낸 값이다.
 
 ![image](https://user-images.githubusercontent.com/94499416/186623723-6dd16f8b-c9ea-49f2-83b0-d6bc91e12e5d.png)
