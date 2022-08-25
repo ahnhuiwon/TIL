@@ -23,7 +23,7 @@ Today I Learned
 </ul>
 
 <ul>NodeJs
-  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main//mongoDB.md">NodeJs에서 크롤링하기</a></li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/nodejs/crawling.md">NodeJs에서 크롤링하기</a></li>
 </ul>
 
 <ul>mongoDB
