@@ -2,7 +2,7 @@
 
 제목에서 언급한 세 키워드들은 아래와 같은 관계를 갖고 있다.
 
-![relation.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aadf151f-3d54-483b-99fe-2fa932b8d000/relation.png)
+![relation](https://user-images.githubusercontent.com/94499416/186623189-de00b58c-e21a-4517-ac6a-9e913b36e85d.png)
 
 ### Database 생성 - use
 
