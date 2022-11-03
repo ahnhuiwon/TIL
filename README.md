@@ -12,6 +12,7 @@ Today I Learned
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/parent_child.md">React 하위 컴포넌트에서 상위 컴포넌트로 데이터 전달하기</a></li>
   <li>custom Hooks 클릭 이벤트로 실행하기</li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/zip_code_api.md">React에서 우편번호 api 사용하기</a></li>
+  <li><a>React에서 카카오맵과 주소를 위도, 경도로 변경하기</a></li>
 </ul>
 
 <ul>Redux
@@ -37,5 +38,4 @@ Today I Learned
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/array_localStorage.md">JavaScript localStorage에 배열 데이터 넣기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/chaneelTok.md">React 채널톡 연동하기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/carousel.md">React Carousel 만들기</a></li>
-  <li><a>React 카카오맵 </a></li>
 </ul>
