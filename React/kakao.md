@@ -42,7 +42,7 @@ appkey에는 javascript 키를 넣어준다.
 
 <br />
 
-### `주소를 위도 경도로 `  
+### `주소를 위도 경도로 변환하기`
   
 ```
 export const useMaps = (prev_addr) => {
@@ -124,70 +124,33 @@ addressSearch 메소드에 첫번째 인자로 주소, 두번째 인자로 익�
   
 status가 OK라면 구조 분해 할당 문법으로 데이터를 할당해준 뒤 kakao_map_func에 파라미터로 전달해준다.
   
-
-
-### `useEffect로 이벤트 생성`
-
-addEventListener 메소드를 이용해 사용자가 스크롤 할 경우 handle_scroll이란 함수를 실행시킨다. 
-
 <br />
 
-```
-useEffect(()=>{
-        window.addEventListener('scroll', handle_scroll);
-        return ()=>{
-            window.removeEventListener('scroll', handle_scroll);
-        }
-    }, []);
-```
-
-<br />
-
-### `handle_scroll 함수`
-
-이 함수에서는 사용자의 현재 스크롤 위치를 가져와 특정 조건을 만족할시에 
-
-setTimeout 함수로 start_carousel 함수를 딱 한번만 실행시킨다.
-
-사용자가 캐러셀 영역을 벗어난다면 clearInterval을 통해 함수를 종료한다.
-
-**setTimeout, setInterval등의 코드는 메모리를 많이 잡아먹는다.**
-
-<br />
+### `카카오맵 출력하기`
 
 ```
-const handle_scroll = async (event) => {
-    const my_scroll = event.srcElement.scrollingElement.scrollTop;
-    if((my_scroll > 3700) && (my_scroll < 4200)){
-        const auto_interval = setTimeout(start_carousel, 300)
-    }
-    if(my_scroll > 1500){
-        clearInterval(client_circle);
-    }
+const kakao_map_func = (x, y) => {
+        const container = document.getElementById("my_map");
+
+        const options = {
+            center : new kakao.maps.LatLng(y, x),
+            level : 3,
+            isPanto : true
+        };
+
+        const marker = new kakao.maps.Marker({
+            position : new kakao.maps.LatLng(y, x)
+        });
+
+        const map = new kakao.maps.Map(container, options);
+        marker.setMap(map);
 }
 ```
 
-<br />
-
-### `캐러셀 시작 함수`
-
-setInterval 함수를 통해 0.1초마다 상태값을 -1 차감한다.
-
-시간이 지날수록 캐러셀 속도가 빨라지는 문제점이 있었는데 분석해보니 사용자가 계속해서 스크롤시 handle_scroll이 실행되고
-
-스크롤의 위치가 조건에 만족한다면 start_carousel을 다시 실행하게 되는 문제점이 있었다.
-
-캐러셀 시작 함수가 호출되고 호출되고 또 호출되서 속도가 매우 빨라지는것이었다.
-
-해결방법으로는 캐러셀이 시작되면 removeEventListener을 사용해 스크롤 이벤트를 삭제해줘야 다시 함수가 호출되는 대참사가 벌어지지 않는다.
-
-<br />
-
-```
-const start_carousel = () => {
-    client_circle = setInterval(()=>{ set_margin_value(margin_value => margin_value - 1) }, 100)
-    window.removeEventListener('scroll', handle_scroll);
-}
-```
-
+my_map이란 id를 가진 DOM을 갖고와 변수에 할당해준 뒤
+ 
+사용할 옵션들과 위도 경도 값을 넣어준다.
+  
+마커에도 동일한 위도 경도 값을 넣은 뒤 setMap 메소드에 카카오맵 데이터가 담긴 map을 파라미터로 넣어준다.
+  
 <br />
