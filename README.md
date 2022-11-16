@@ -13,7 +13,7 @@ Today I Learned
   <li>custom Hooks 클릭 이벤트로 실행하기</li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/zip_code_api.md">React에서 우편번호 api 사용하기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/kakao.md">React에서 카카오맵과 주소를 위도, 경도로 변경하기</a></li>
-  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/kakao.md">React 엑셀 파일 다운로드 </a></li>
+  <li><a href="">React 엑셀 파일 다운로드 </a></li>
 </ul>
 
 <ul>Redux
