@@ -4,7 +4,7 @@
 
 ## update
 
-### `배열로 구성된 field에서 조건에 맞는 경우 업데이트`
+### `배열로 구성된 field에서 조건에 맞는 경우 해당 field 업데이트`
 
 ```
 db.collection('document 이름').updateOne(
@@ -38,11 +38,35 @@ $elemMatch를 사용하면 배열로 구성된 filed에 key와 key value값이 �
 
 '$set을 통해 특정 필드의 값을 수정하고 $연산자를 사용해 배열 필드의 하위 문서를 읽는다.'
 
+<br />
 
-```csharp
-> use first_mongodb
-switched to db first_mongodb
+### `배열로 구성된 field에서 조건에 맞는 경우 해당 filed []값으로 처리`
+
 ```
+db.collection('document 이름').update(
+	{ _id: new require('mongodb').ObjectID('$ObjectID명'), '필드명': '필드값' },
+        { $unset: { 'keywords.$.more': '', 'keywords.$.type': '' }}
+)
+```
+
+<br />
+
+```
+{ _id: new require('mongodb').ObjectID('ObjectID명'), filter : { $elemMatch : { 필드명 : '필드값',  필드명 : '필드값' } } }
+```
+<br />
+
+new require().ObjectID를 사용해 nodeJS mongoDB 기본 드라이브에서 문자열('ObjectID명')을 ObjectId로 변환할 수 있다.
+
+<br />
+
+```
+{ $set: { 'filter.$.more': '변경할 값' }
+```
+
+<br />
+
+'$unset은 해당 필드를 제거하는 연산자이지만 배열의 요소에 사용할 경우 제거하지 않고 null 값으로 교체한다.'
 
 **현재 사용중인 데이터베이스를 확인하고 싶다면 db명령어를 입력한다.**
 
