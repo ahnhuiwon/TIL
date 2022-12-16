@@ -30,7 +30,9 @@ $elemMatch를 사용하면 배열로 구성된 filed에 key와 key value값이 �
 
 <br/>
 
+```
 { $set: { 'filter.$.more': '변경할 값' }
+```
 
 <br />
 
