@@ -1,5 +1,11 @@
 # TIL
 Today I Learned
+
+<ul>Javascript
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/array_localStorage.md">JavaScript localStorage에 배열 데이터 넣기</a></li>
+  <li>filter와 reduce을 사용해 그룹핑 후 요소 가져오기</li>
+</ul>
+
 <ul>React
   <li>useEffect</li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/useReducer.md">useReducer</a></li>
@@ -37,7 +43,6 @@ Today I Learned
 
 <ul>Etc
   <li>React 데이터 indexOf로 필터링하기</li>
-  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/array_localStorage.md">JavaScript localStorage에 배열 데이터 넣기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/chaneelTok.md">React 채널톡 연동하기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/carousel.md">React Carousel 만들기</a></li>
 </ul>
