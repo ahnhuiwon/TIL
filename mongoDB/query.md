@@ -22,10 +22,19 @@ updateOne은 단일 수정을 말한다.
 ```
 { _id: new require('mongodb').ObjectID('ObjectID명'), filter : { $elemMatch : { 필드명 : '필드값',  필드명 : '필드값' } } }
 ```
+<br />
 
 new require().ObjectID를 사용해 nodeJS mongoDB 기본 드라이브에서 문자열('ObjectID명')을 ObjectId로 변환할 수 있다.
 
-$elemMatch를 사용해 
+$elemMatch를 사용하면 배열로 구성된 filed에 key와 key value값이 일치할 경우 조건에 맞는 데이터를 선택한다.
+
+<br/>
+
+{ $set: { 'filter.$.more': '변경할 값' }
+
+<br />
+
+$set을 통해 특정 필드의 값을 수정하고 $연산자를 사용해 배열 필드의 하위 문서를 읽는다.
 
 
 ```csharp
