@@ -3,7 +3,7 @@ Today I Learned
 
 <ul>Javascript
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/array_localStorage.md">JavaScript localStorage에 배열 데이터 넣기</a></li>
-  <li>filter와 reduce을 사용해 그룹핑 후 요소 가져오기</li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/javascript/group.md">filter와 reduce을 사용해 그룹핑 후 요소 가져오기</a></li>
 </ul>
 
 <ul>React
