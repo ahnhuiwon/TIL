@@ -4,7 +4,7 @@
 
 ## update
 
-### `배열로 구성된 field에서 조건에 맞는 경우 해당 field 업데이트`
+### 배열로 구성된 field에서 조건에 맞는 경우 해당 field 업데이트
 
 ```
 db.collection('document 이름').updateOne(
@@ -40,7 +40,7 @@ $elemMatch를 사용하면 배열로 구성된 filed에 key와 key value값이 �
 
 <br />
 
-### `배열로 구성된 field에서 조건에 맞는 경우 해당 filed []값으로 처리`
+### 배열로 구성된 field에서 조건에 맞는 경우 해당 filed []값으로 처리
 
 ```
 db.collection('document 이름').update(
