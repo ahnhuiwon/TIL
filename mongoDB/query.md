@@ -68,3 +68,24 @@ new require().ObjectID를 사용해 nodeJS mongoDB 기본 드라이브에서 문
 
 '$unset은 해당 필드를 제거하는 연산자이지만 배열의 요소에 사용할 경우 제거하지 않고 null 값으로 교체한다.'
 
+<br />
+
+### ISODate로 구성된 날짜 조회하기
+
+```
+db.collection('document 이름').aggregate([
+	{ $match: { "dataRegistDate": {$exists:true},"dataRegistDate": { $gte: new Date("ISO DATE"), $lte: new Date("ISO DATE") } } },
+	{ $sort : { "dataRegistDate": -1} },
+]).toArray()
+```
+
+<br />
+
+```
+{ $match: { "dataRegistDate": { $gte: new Date("ISO DATE"), $lte: new Date("ISO DATE") } } }
+```
+<br />
+
+new Date()를 사용해 ISO DATE를 비교해준다.
+
+<br />
