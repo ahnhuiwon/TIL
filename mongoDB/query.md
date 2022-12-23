@@ -2,6 +2,45 @@
 
 이 문서에서는 지금까지 사용했던 mongoDB의 쿼리문들을 정리할려고 한다.
 
+## read
+
+### ISODate로 구성된 날짜 조회하기
+
+```
+db.collection('document 이름').aggregate([
+	{ $match: { "dataRegistDate": {$exists:true},"dataRegistDate": { $gte: new Date("ISO DATE"), $lte: new Date("ISO DATE") } } },
+	{ $sort : { "dataRegistDate": -1} },
+]).toArray()
+```
+
+<br />
+
+```
+{ $match: { "dataRegistDate": { $gte: new Date("ISO DATE"), $lte: new Date("ISO DATE") } } }
+```
+<br />
+
+new Date()를 사용해 ISO DATE를 비교해준다.
+
+<br />
+
+### $lookup으로 join하기
+
+```
+
+```
+
+<br />
+
+```
+
+```
+<br />
+
+
+
+<br />
+
 ## update
 
 ### 배열로 구성된 field에서 조건에 맞는 경우 해당 field 업데이트
@@ -70,22 +109,5 @@ new require().ObjectID를 사용해 nodeJS mongoDB 기본 드라이브에서 문
 
 <br />
 
-### ISODate로 구성된 날짜 조회하기
 
-```
-db.collection('document 이름').aggregate([
-	{ $match: { "dataRegistDate": {$exists:true},"dataRegistDate": { $gte: new Date("ISO DATE"), $lte: new Date("ISO DATE") } } },
-	{ $sort : { "dataRegistDate": -1} },
-]).toArray()
-```
 
-<br />
-
-```
-{ $match: { "dataRegistDate": { $gte: new Date("ISO DATE"), $lte: new Date("ISO DATE") } } }
-```
-<br />
-
-new Date()를 사용해 ISO DATE를 비교해준다.
-
-<br />
