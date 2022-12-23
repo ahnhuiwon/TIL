@@ -27,17 +27,49 @@ new Date()를 사용해 ISO DATE를 비교해준다.
 ### $lookup으로 join하기
 
 ```
-
+db.getCollection("document 이름").aggregate([
+    { $match : { "필드명" : "필드값", "필드명" : "필드값", "필드명" : "필드값"} },
+    { 
+        $lookup : { 
+            from : "join할 document 이름", 
+            let : { "파이프라인에서 사용할 필드명" : "$사용할 변수명" }, 
+            pipeline : [
+                { $match : { $expr : { $eq : [ "$필드명", "$$필드명" ] } } },
+                { $project : { "필드명" : 1, "필드명" : 0} }
+            ],
+            as : "반환되는 그룹 이름"
+        } 
+    }
+])
 ```
 
 <br />
 
 ```
-
+$lookup : { 
+   from : "join할 document 이름", 
+   let : { "파이프라인에서 사용할 필드명" : "$사용할 변수명" }, 
+   pipeline : [
+       { $match : { $expr : { $eq : [ "$필드명", "$$필드명" ] } } },
+       { $project : { "필드명" : 1, "필드명" : 0} }
+   ],
+   as : "반환되는 그룹 이름"
+} 
 ```
 <br />
 
+mongoDB에는 JOIN 대신 $lookup이란 쿼리문을 사용한다.
 
+from : join할 document 이름을 적는다.
+
+let : 파이프라인에서 사용할 필드명 : 변수명을 선언한다.
+
+**pipeline**
+$match : 비교할 실제 조건을 적는다. $$는 조인 대상 document의 필드이고 $는 현재 조회 대상 컬렉션의 필드이다.
+
+$project : 반환할 필드명을 적는다. 0은 해당 필드가 반환되지 않고 1은 해당 필드가 반환된다.
+
+as : 반환되는 값을 해당 선언한 그룹에 담아준다.
 
 <br />
 
