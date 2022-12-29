@@ -78,6 +78,32 @@ as : 반환되는 값을 해당 선언한 그룹에 담아준다.
 
 <br />
 
+**$lookup document에서 필드 비교**
+
+```
+...
+pipeline : [
+   { $match : { "필드명" : "필드값" } },
+   { $match : { $expr : { $eq : [ "$필드명", "$$필드명" ] } } },
+   { $project : { "필드명" : 1, "필드명" : 0} }
+],
+...
+```
+
+pipeline 내부에서 $match를 사용해 서브 document내에서 필드를 비교할 수 있다.
+
+<br />
+
+
+**$lookup 후 해당 필드가 없을때 반환값을 없애고 싶다면?**
+
+```
+...,
+{ $unwind : { "path" : "$필드명", preserveNullAndEmptyArrays: false } }
+```
+
+<br />
+
 ## update
 
 ### 배열로 구성된 field에서 조건에 맞는 경우 해당 field 업데이트
