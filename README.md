@@ -20,7 +20,7 @@ Today I Learned
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/zip_code_api.md">React에서 우편번호 api 사용하기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/kakao.md">React에서 카카오맵과 주소를 위도, 경도로 변경하기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/excelDown.md">React 엑셀 파일 다운로드 </a></li>
-  <li><a href="https://github.com/ahnhuiwon/TIL">React-Query</a></li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/react-query.md">React-Query</a></li>
 </ul>
 
 <ul>Redux
