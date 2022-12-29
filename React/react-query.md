@@ -105,6 +105,77 @@ root.render(
 
 <br />
 
+#### Query Cache Key
+
+queryKey는 React Query에서 중요한 개념이다. 내부적으로 데이터를 캐시하고 쿼리에 대한 종속성이 변경될때 자동으로 다시 가져올 수 있게 한다.
+
+그리고 필요한 시점에 queryKey를 통해 query cahce와 상호작용이 가능하다.
+
+<br />
+
+**Cashing Data**
+
+내부에서 query cache는 Key가 직렬화되어 있고, Key는 해쉬되어 관리된다.
+
+아래 코드는 오브젝트의 키 순서와 관계없이 다음 쿼리는 모두 같은 쿼리로 취급한다.
+
+```
+useQuery(['todos', { status, page }], ...)
+useQuery(['todos', { page, status }], ...)
+useQuery(['todos', { page, status, other: undefined }], ...)
+```
+
+<br />
+
+아래 코드는 배열 요소 순서에 의해 같지 않은 쿼리 키이다.
+
+```
+useQuery(['todos', status, page], ...)
+useQuery(['todos', page, status], ...)
+useQuery(['todos', undefined, page, status], ...)
+```
+
+<br />
+
+중요한 사실은 Key가 쿼리에 대해 유니크 해야한다는것이며
+
+React Query는 cache에 Key를 이용해 접근한다는 것이다. 당연히 useQuery 및 useInfiniteQuery에 동일한 Key를
+
+사용할 수 없다. 결국 하나의 query cache만 유효하게 된다.
+
+```
+useQuery(['user'], api_function)
+
+// 잘못된 사용
+useInfiniteQuery(['user'], api_function)
+
+// 사용 가능
+useInfiniteQuery(['infinite_user'], api_function)
+```
+
+<br />
+
+**staleTime과 cacheTime**
+
+<br />
+
+**자동 Refetch**
+
+refetching의 전제 조건은 데이터가 stale한 상태, 즉 캐싱된 data를 말하며 최신화가 필요한 데이터를 말한다.
+
+쉽게 말한다면 최신화가 필요한 상태가 되면 refetch 된다는 것이다.
+
+refetch 되는 조건들은 아래와 같다.
+
+1. query key에 react state를 포함시키고, state값이 변경될때
+2. 데이터가 stale일 경우, 윈도우에 포커스가 될떄
+3. 마운트 될때마다
+4. 연결이 끊어졌다가 재 연결 되었을 때
+5. 고의로 쿼리 무효화를 했을 때
+6. 명시적으로 refetch 함수를 호출
+
+<br />
+
 #### useQuery
 
 useQuery는 서버에서 데이터를 가져오기 위해 사용하는 hook이다. 쉽게 get메서드라고 생각하면 된다.
@@ -175,3 +246,7 @@ staleTime : Infinity는 만료시간을 무한으로 설정하여 API 추가 호
 <br />
 
 ![image](https://user-images.githubusercontent.com/94499416/209779718-220d229b-9785-4442-a54f-2625776b7d10.png)
+
+<br />
+
+**useQuery refetching**
