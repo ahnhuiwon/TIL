@@ -250,3 +250,62 @@ staleTime : Infinity는 만료시간을 무한으로 설정하여 API 추가 호
 <br />
 
 **useQuery refetching**
+
+아래 코드는 위에서 언급한 1번 state를 활용한 refetching 방법이다.
+
+```
+function App() {
+
+  const [first_state, set_first_state] = useState(1);
+
+
+  // state 변경 함수
+  const change_state = (value_param) => {
+    const { value } = value_param.target;
+
+    set_first_state(value);
+  }
+
+
+  // api 함수
+  const api_function = async (user_param) => {
+    const res_data = await axios.get(`https://jsonplaceholder.typicode.com/users/${user_param}`);
+
+    return res_data.data
+  }
+
+
+  // react-query
+  const { data } = useQuery(['users', first_state], () => api_function(first_state));
+  // fetchComments는 postId를 인자로 받기 때문에 익명함수로 감싸서 작성한다
+  // 쿼리 키를 의존성 배열로 작성하여 post.id마다 각기 다른 쿼리를 생성
+  
+  
+  return (
+    <div className="App">
+      <input type="number" value={first_state} max="10" onChange={(e)=>{ change_state(e) }} />
+      {
+        data &&
+        <ul>
+          <li>{data.username}</li>
+          <li>{data.email}</li>
+          <li>{data.phone}</li>
+          <li>{data.website}</li>
+        </ul>
+      }
+    </div>
+  );
+}
+```
+
+<br />
+
+![image](https://user-images.githubusercontent.com/94499416/209924705-6bf46b47-829a-4a0f-bc97-e0757239b640.png)
+
+<br />
+
+![image](https://user-images.githubusercontent.com/94499416/209924736-f3b94ed6-6d51-4c75-98de-3bb9762de648.png)
+
+<br />
+
+state값이 변경됨에 따라 refetching되는 화면이다.
