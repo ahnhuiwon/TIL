@@ -309,3 +309,64 @@ function App() {
 <br />
 
 state값이 변경됨에 따라 refetching되는 화면이다.
+
+<br />
+
+**useQuery 동기적으로 사용하기**
+
+useQuery는 기본적으로 비동기로 동작한다. useQuery에 후에 서술할 코드와 같이 enabled 옵션을 false로 사용하면 동기적으로 사용할 수 있다.
+
+enabled 옵션을 false로 설정한다면 컴포넌트가 마운트 되거나 윈도우 포커스가 되어도 쿼리가 자동으로 실행되지 않는다.
+
+또한 queryClient에서 invalidateQueries, refetchQueries 함수를 호출해도 refetching되지 않는다.
+
+쿼리는 캐싱되지 않은 idle 상태이며 fetching을 위해서는 refetch 함수를 트리거로 사용해야 한다.
+
+아래 코드는 버튼을 클릭시 useQuery를 통해 데이터를 가져오는 코드이다.
+
+```
+function App() {
+
+  const [first_state, set_first_state] = useState(1);
+
+  // api 함수
+  const api_function = async (user_param) => {
+    const res_data = await axios.get(`https://jsonplaceholder.typicode.com/users/${user_param}`);
+
+    return res_data.data
+  }
+
+  // react-query
+  const { status, data, refetch, error } = useQuery(['users', first_state], () => api_function(first_state),{
+    enabled : false
+  });
+  
+  if(status === "success"){
+    console.log(data)
+  }
+
+  if(status === "error"){
+    console.log(error)
+  }
+
+  useEffect(()=>{
+    console.log(status);
+  }, [status])
+
+  return (
+    <div className="App">
+      <button onClick={()=>{ refetch() }}>USER</button>
+    </div>
+  );
+}
+```
+
+<br/>
+
+실행 결과는 다음과 같다.
+
+![image](https://user-images.githubusercontent.com/94499416/210027358-32b8cb49-ea46-42ac-987c-56471b8c793d.png)
+
+<br />
+
+
