@@ -369,4 +369,32 @@ function App() {
 
 <br />
 
+#### useQueries로 useQuery 여러개 사용하기
+
+useQuery는 기본적으로 비동기로 동작하기 때문에 컴포넌트 내에 useQuery가 여러 개 있다면 순서대로 실행되는게 아니라 동시에 실행을 한다.
+
+이런 경우에는 아래 코드와 같이 useQueries를 사용하면 여러 개의 쿼리를 하나로 묶어서 사용할 수 있다.
+
+```
+const [first_state, set_first_state] = useState([1,2,3,4,5]);
+
+  // api 함수
+  const api_function = async (user_param) => {
+    const res_data = await axios.get(`https://jsonplaceholder.typicode.com/users/${user_param}`);
+
+    return res_data.data
+  }
+
+  // react-query
+  const result = useQueries(
+    first_state.map(data => {
+      return {
+        queryKey : ['Users', data],
+        queryFn : () => api_function(data) 
+      }
+    })
+  );
+```
+
+
 
