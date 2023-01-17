@@ -33,6 +33,7 @@ Today I Learned
 
 <ul>NodeJs
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/nodejs/node.md">NodeJs 핵심 개념</a></li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/nodejs/crawling.md">NodeJs 에러 핸들링</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/nodejs/crawling.md">NodeJs에서 크롤링하기</a></li>
 </ul>
 
