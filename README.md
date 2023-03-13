@@ -48,4 +48,5 @@ Today I Learned
   <li>React 데이터 indexOf로 필터링하기</li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/React/chaneelTok.md">React 채널톡 연동하기</a></li>
   <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/carousel.md">React Carousel 만들기</a></li>
+  <li><a href="https://github.com/ahnhuiwon/TIL/blob/main/Etc/googleLogin.md">google login 연동하기</a></li>
 </ul>
