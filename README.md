@@ -1,8 +1,8 @@
 # TIL
 Today I Learned
 
-<ul>
-  <li a href="./nginx/nginx">NGINX</li>
+<ul>NGINX
+  <li><a href="./nginx/nginx.md">NGINX</a></li>
 </ul>
 
 <ul>Javascript
