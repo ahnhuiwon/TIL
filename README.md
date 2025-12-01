@@ -1,6 +1,10 @@
 # TIL
 Today I Learned
 
+<ul>웹 서버
+  <li><a href="./web_server/setting.md">웹 서버 셋팅</a></li>
+</ul>
+
 <ul>NGINX
   <li><a href="./nginx/nginx.md">NGINX</a></li>
 </ul>
